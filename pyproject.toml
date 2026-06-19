@@ -1,0 +1,49 @@
+[project]
+name = "betting-auto-follow-bot"
+version = "0.1.0"
+description = "Telegram bot for tracking Polymarket bettors"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-telegram-bot[all]>=21.12",
+    "python-dotenv>=1.2.2",
+    "zapros>=0.11.0",
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.13.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+    "apscheduler>=3.11.0",
+    "structlog>=25.0.0",
+    "py-clob-client-v2>=1.0.1",
+    "asyncpg>=0.30.0",
+    "orjson>=3.11.9",
+    "psycopg2==2.9.12",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "isort>=8.0.1",
+    "pylint>=4.0.5",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.15.14",
+    "asyncpg>=0.30.0",
+    "mypy>=2.1.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+follow_imports = "skip"
+disallow_untyped_defs = false
+implicit_optional = true
+strict_optional = false
+warn_no_return = false
+local_partial_types = true
+disable_error_code = [
+    "typeddict-item",
+]

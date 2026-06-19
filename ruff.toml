@@ -1,0 +1,58 @@
+target-version = "py312"
+
+line-length = 120
+indent-width = 4
+
+src = ["app"]
+
+[lint]
+preview = false
+
+select = [
+    "UP",   # pyupgrade
+    "I",    # isort
+    "E",    # flake8-errors
+    "W",    # flake8-warnings
+    "F",    # flake8-pyflakes
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "S",    # flake8-bandit
+#    "BLE",  # flake8-blind-except
+    "T20",  # flake8-print
+    "T10",  # flake8-debugger
+    "PT",   # flake8-pytest-style
+    "RUF",  # Ruff
+    "DTZ005",  # flake8-datetimez
+#    "ERA",  # eradicate
+    "FURB", # refurb
+]
+# Игнорирование конкретных предупреждений линтера
+ignore = [
+    "C408",  # Excess call of dict, list и т.д.
+    "RUF001", # Ignore similar  symbols with different ASCII
+    "RUF002", # Ignore similar  symbols with different ASCII
+    "RUF003", # Ignore similar  symbols with different ASCII
+    "W291", # Trailing whitespace
+    "S108", # Usage of /tmp files
+    "S104", # Bind 0.0.0.0
+    "RUF100" # unused noqa
+]
+exclude = [
+    "./tests/**",
+]
+
+# Fixable errors
+fixable = [
+    "I", # sort imports
+    "UP",
+    "F",
+]
+
+# Format settings
+[format]
+quote-style = "double"
+indent-style = "space"
+
+# Plugin additional settings
+[lint.flake8-bandit]
+check-typed-exception = true
