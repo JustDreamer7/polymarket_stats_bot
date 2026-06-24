@@ -1,9 +1,9 @@
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from telegram.ext import Application, ApplicationBuilder
 
-from app.config import get_settings
 from app.common.database import Database
 from app.common.logger import logger
+from app.config import get_settings
 from app.tasks.bettor_stats_task import BettorStatsUpdater
 from app.tasks.trades_task import TradesNotifier
 from app.tg_bot.bot import COMMANDS, TelegramBot

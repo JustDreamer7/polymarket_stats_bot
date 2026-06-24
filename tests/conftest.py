@@ -4,8 +4,8 @@ import pytest
 import pytest_asyncio
 from dotenv import load_dotenv
 
-from app.config import get_settings
 from app.common.database import Database
+from app.config import get_settings
 from app.schemas.polymarket_gamma import PublicProfile
 
 TEST_ADDRESS = "0x8eb2df7e7b89d594e0af2d05c3c79e0b79777ab1"

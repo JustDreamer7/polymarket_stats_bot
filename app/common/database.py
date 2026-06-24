@@ -10,9 +10,9 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
 )
 
-from app.config import DatabaseConfig
 from app.common.logger import logger
 from app.common.models import Base
+from app.config import DatabaseConfig
 
 
 @asynccontextmanager

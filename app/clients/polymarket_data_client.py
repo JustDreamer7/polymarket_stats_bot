@@ -40,11 +40,22 @@ class PolymarketDataClient(BaseClient):
         )
 
     async def get_closed_positions(
-        self, user_address: str, limit: int = 50, offset: int = 0, **kwargs
+        self,
+        user_address: str,
+        limit: int = 50,
+        offset: int = 0,
+        sort_by: str = "TIMESTAMP",
+        **kwargs,
     ) -> list[ClosedPosition]:
         async with self.get_client() as client:
             params = self.stringify_params(
-                {"user": user_address, "limit": limit, "offset": offset, **kwargs}
+                {
+                    "user": user_address,
+                    "limit": limit,
+                    "offset": offset,
+                    "sortBy": sort_by,
+                    **kwargs,
+                }
             )
             response = await client.get("/closed-positions", params=params)
             if 400 <= response.status < 600:
@@ -56,11 +67,12 @@ class PolymarketDataClient(BaseClient):
             ]
 
     async def get_closed_positions_paginated(
-        self, user_address: str, **kwargs
+        self, user_address: str, max_offset: int = 10000, **kwargs
     ) -> list[ClosedPosition]:
         return await self._paginate(
             partial(self.get_closed_positions, user_address, **kwargs),
             limit=50,
+            max_offset=max_offset,
         )
 
     async def get_leaderboard(self, **kwargs) -> list[LeaderboardEntry]:

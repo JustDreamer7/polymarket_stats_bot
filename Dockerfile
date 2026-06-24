@@ -19,7 +19,7 @@ RUN python3 -m uv sync --active --no-dev --no-install-project
 
 COPY app ./app
 COPY alembic ./alembic
-COPY alembic.ini main.py ./
+COPY alembic.ini main.py healthcheck.py ./
 
 ENV PATH="/app/.venv/bin:$PATH"
 

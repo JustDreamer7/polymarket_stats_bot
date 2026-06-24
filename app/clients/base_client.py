@@ -21,7 +21,9 @@ class BaseClient:
         ) as client:
             yield client
 
-    async def _paginate(self, fetch_page: Callable, limit: int) -> list:
+    async def _paginate(
+        self, fetch_page: Callable, limit: int, max_offset: int | None = None
+    ) -> list:
         BATCH_SIZE = 10
         results: list = []
         current_offset = 0
@@ -43,6 +45,8 @@ class BaseClient:
             if done:
                 break
             current_offset += BATCH_SIZE * limit
+            if max_offset is not None and max_offset <= current_offset:
+                break
         return results
 
     @staticmethod

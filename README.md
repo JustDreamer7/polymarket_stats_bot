@@ -82,6 +82,7 @@ Settings are read from environment variables (or a `.env` file).
 | `NOTIFY_INTERVAL_MINUTES` | `10` | How often the new-trades notifier runs |
 | `STATS_INTERVAL_MINUTES` | `20` | How often bettor stats are recomputed |
 | `ENV_FILE` | *(unset)* | Path to a `.env` file (via python-dotenv) |
+| `HEALTHCHECK_CHAT_ID` | *(unset)* | Chat id the healthcheck probes with `/healthping` (required for the `healthcheck` service) |
 
 ## Running
 
@@ -105,3 +106,4 @@ Services in `docker-compose.yml`:
 - `postgres` — the database;
 - `migrate` — a one-shot `alembic upgrade head`;
 - `bot` — the application itself.
+- `healthcheck` — a small FastAPI app exposing `GET /health` that probes the bot webhook.

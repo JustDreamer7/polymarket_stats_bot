@@ -32,7 +32,7 @@ def upgrade() -> None:
     op.create_table('users',
     sa.Column('uid', sa.Uuid(), nullable=False),
     sa.Column('user_name', sa.String(length=255), nullable=False),
-    sa.Column('user_tg_id', sa.Integer(), nullable=False),
+    sa.Column('user_tg_id', sa.BIGINT(), nullable=False),
     sa.Column('is_bot', sa.Boolean(), nullable=False),
     sa.Column('firstname', sa.String(length=255), nullable=True),
     sa.Column('lastname', sa.String(length=255), nullable=True),

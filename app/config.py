@@ -60,6 +60,8 @@ class Config(metaclass=SingletonMeta):
         try:
             var = "TELEGRAM_TOKEN"
             self.telegram_token = environ[var]
+            var = "HEALTHCHECK_CHAT_ID"
+            self.healthcheck_chat_id = environ[var]
         except KeyError:
             print(f"Env variable {var} is not set")
             sys.exit(1)
@@ -145,6 +147,7 @@ class Config(metaclass=SingletonMeta):
             "recent_trades_limit": self.recent_trades_limit,
             "notify_interval_minutes": self.notify_interval_minutes,
             "stats_interval_minutes": self.stats_interval_minutes,
+            "healthcheck_chat_id": self.healthcheck_chat_id,
         }
 
 
